@@ -25,7 +25,7 @@ class OvitoData(InMemoryDataset):
         self.frame_number = frame_number
         self.rounding_edge_vec_value = rounding_edge_vec_value
         self.one_hot_dim = one_hot_dim
-        super().__init__(root, transform, pre_transform, pre_filter)
+        super().__init__(root, transform, pre_transform, pre_filter, force_reload=True)
         self.data, self.slices = torch.load(self.processed_paths[0])
 
     @property
@@ -268,7 +268,7 @@ class SyntheticDataset(InMemoryDataset):
         self.atom_types_path = atom_types_path
         self.pre_modification = pre_modification
         self.one_hot_dim = one_hot_dim
-        super().__init__(root, transform, pre_transform, pre_filter)
+        super().__init__(root, transform, pre_transform, pre_filter, force_reload=True)
         self.data, self.slices = torch.load(self.processed_paths[0])
 
     @property
